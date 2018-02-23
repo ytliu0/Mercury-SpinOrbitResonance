@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta name="keywords" content="animation, Mercury, spin-orbit resonance" />
+<meta charset="UTF-8" />
+
+<head>
+<title>Mercury's 3:2 Spin-Orbit Resonance</title>
+<link rel="stylesheet" href="mercury.css">
+</head>
+
+<body onload="init()">
+<div id="wrapper">
+<h1>Mercury's 3:2 Spin-Orbit Resonance</h1>
+
+<p>When a small body orbits close to a massive object, the small body experiences strong tidal forces from the massive object. The tidal forces can significantly affect the spin rate of the small body through a mechanism called <em>tidal locking</em>. One result of tidal locking is to force the same hemisphere of the small body always facing the massive object. When the orbit is nearly circular, the result is <em>synchronous rotation</em>, in which the spin period of the small body is the same as its orbital period. The Moon's spin is an example of this synchronous rotation.</p>
+
+<p>Mercury is the planet closest to the Sun, but Mercury's orbit is eccentric and its orbital speed around the Sun changes as its distance from the Sun varies. Since the spin rate is constant, it is impossible for the same hemisphere of Mercury always facing the Sun. Instead, Mercury is tidally locked into the 3:2 spin-orbit resonance, in which the ratio of the spin rate to its orbital rate is locked to 3:2. That is, 3P<sub>rot</sub> = 2P<sub>rot</sub>, where P<sub>rot</sub> = 58.646 days is Mercury's spin period and P<sub>rot</sub> = 87.969 days is its orbital period. In this configuration, the same hemisphere is facing the Sun only when Mercury is near perihelion. That is, Mercury's orbital angular speed is almost the same as its spin angular speed near perihelion. In fact, Mercury is in near synchronous rotation over a significant fraction of its orbit close to the perihelion, as will be seen from the animation below.</p>
+    
+<canvas id="figure" width="500" height="500">
+  CANVAS NOT SUPPORTED IN THIS BROWSER!
+</canvas>
+    
+<p>Consider two points <span style="color:magenta;"><i>P</i></span> (<span style="color:magenta;">magenta</span>) and <span style="color:green;"><i>Q</i></span> (<span style="color:green;">green</span>) at Mercury's equator. As shown in the figure above where Mercury is at perihelion, <span style="color:magenta;"><i>P</i></span> faces the Sun directly ("subsolar point") and <span style="color:green;"><i>Q</i></span> is at an angle 90&deg; to the west of <span style="color:magenta;"><i>P</i></span>. Both the spin and orbital motion are in counter-clockwise direction. The shape of Mercury's orbit and size of the Sun are drawn to scale, but Mercury's radius is multiplied by a factor of 1660 in order to be able to visualize how the positions of <span style="color:magenta;"><i>P</i></span> and <span style="color:green;"><i>Q</i></span> change with time. The red semi-circle represents Mercury's day side (the hemisphere facing the Sun) and the black semi-circle represents Mercury's night side.</p>
+
+<p>The animation below shows how the positions of <span style="color:magenta;"><i>P</i></span> (<span style="color:magenta;">magenta</span>) and <span style="color:green;"><i>Q</i></span> (<span style="color:green;">green</span>) change with time as Mercury spins and revolves around the sun. The dash line connects Mercury's center and the Sun, which is useful in visualizing how the relative angular position of <span style="color:magenta;"><i>P</i></span> with respect to the Sun changes with time. The inset shows the motion of Mercury's day and night hemispheres as seen in a reference frame co-rotating with Mercury. In the co-rotating frame, <span style="color:magenta;"><i>P</i></span> and <span style="color:green;"><i>Q</i></span> are fixed.</p>
+<br />
+   
+<div class="center">
+    <br />
+<p id="timeAnim1" style="color:blue;"></p>
+    
+<canvas id="animation1" width="500" height="500">
+  CANVAS NOT SUPPORTED IN THIS BROWSER!
+</canvas>
+    
+    <div style="background-color:#d5d5d5;padding:10px;">
+<p>Animation speed:<br /> 0.5&times;<input onchange="animate1_speed(1)" type="radio" id="anim1speed1" />&nbsp;&nbsp;&nbsp;&nbsp; 
+    1&times;<input onchange="animate1_speed(2)" type="radio" id="anim1speed2" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    1.5&times;<input onchange="animate1_speed(3)" type="radio" id="anim1speed3" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    2&times;<input onchange="animate1_speed(4)" type="radio" id="anim1speed4" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    2.5&times;<input onchange="animate1_speed(5)" type="radio" id="anim1speed5" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    3&times;<input onchange="animate1_speed(6)" type="radio" id="anim1speed6" /></p>
+<p id="anim1Start"><input id="anim1StartPlayButton" type="button" class="button" name="control" value="Play Animation" onclick="play_anim1()" /></p>
+<p id="anim1Playing"><input type="button" class="button" name="control" value="Replay" onclick="play_anim1()" /> 
+<input type="button" id="anim1Pause" class="button" name="control" value="Pause" onclick="anim1PauseResume()" /></p>
+    
+<p><span style="color:magenta;font-size:120%;">&#9679;</span> &nbsp; <span style="color:green;font-size:120%;">&#9679;</span>: Two points on Mercury's surface &nbsp;&nbsp; <span style="color:blue;">&bull;</span>: Perihelion</p>
+<p><b><span style="color:red;">Red: Mercury's day side</span>&nbsp;&nbsp; Black: Mercury's night side</b></p>
+<p>Note: The shape of Mercury's orbit and the Sun's size are drawn to scale, but Mercury's radius is enlarged by a factor of 1660.</p>
+<p>Inset: Day-night hemispheres as seen in Mercury's co-rotating frame.</p>
+    </div>
+</div>
+<br />
+    
+<br />
+<p>The animation starts at t=0 when Mercury is at aphelion. Let's focus on the magenta point <span style="color:magenta;"><i>P</i></span>. While the spin rate of Mercury is constant, its orbital speed around the Sun varies. At aphelion, the orbital speed is the slowest and <span style="color:magenta;"><i>P</i></span> sees the Sun rising. As Mercury is getting closer to the Sun, its orbital speed increases and the Sun appears to move slower in Mercury's sky. The Sun is almost directly overhead around t &approx; 30 days (14 days before Mercury passes perihelion). Interestingly, the Sun appears almost stationary in Mercury's sky between t &approx; 30 days and t &approx; 58 days (14 days past perihelion). The Sun is almost directly overhead during this period as seen at <span style="color:magenta;"><i>P</i></span>. In fact, the orbital angular speed at perihelion is slightly larger than the spin angular speed. So the Sun appears to move eastward with respect to the horizon. Calculation shows that the backward motion occurs whenever Mercury is within 4 days from the perihelion. However, the backward motion is very slow, the Sun moves about 1.1&deg; during these 8 days. For comparison, the angular diameter of the Sun as seen on Mercury at perihelion is 1.7&deg;.</p>
+    
+<p>The backward motion of the Sun can be seen in the animation by looking closely the motion of the day-night hemispheres in the inset. The motion is clockwise most of the time, but you can see a slight counter-clockwise motion when Mercury is close to the perihelion. This backward motion can be seen more clearly in the following animation, where the inset is made larger.</p>
+    
+<br />
+    
+<div class="center">
+<br />
+<p id="timeAnim2" style="color:blue;"></p>
+
+<canvas id="animation2" width="500" height="500">
+  CANVAS NOT SUPPORTED IN THIS BROWSER!
+</canvas>
+   <div style="background-color:#d5d5d5;padding:10px;"> 
+<p>Animation speed:<br /> 0.5&times;<input onchange="animate2_speed(1)" type="radio" id="anim2speed1" />&nbsp;&nbsp;&nbsp;&nbsp; 
+    1&times;<input onchange="animate2_speed(2)" type="radio" id="anim2speed2" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    1.5&times;<input onchange="animate2_speed(3)" type="radio" id="anim2speed3" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    2&times;<input onchange="animate2_speed(4)" type="radio" id="anim2speed4" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    2.5&times;<input onchange="animate2_speed(5)" type="radio" id="anim2speed5" /> &nbsp;&nbsp;&nbsp;&nbsp;
+    3&times;<input onchange="animate2_speed(6)" type="radio" id="anim2speed6" /></p>
+    
+<p id="anim2Start"><input id="anim2StartPlayButton" type="button" class="button" name="control" value="Play Animation" onclick="play_anim2()" /></p>
+<p id="anim2Playing"><input type="button" class="button" name="control" value="Replay" onclick="play_anim2()" /> 
+<input type="button" id="anim2Pause" class="button" name="control" value="Pause" onclick="anim2PauseResume()" /></p>
+    
+<p>The setup is the same as in the first animation, but the inset is made larger in order to see more clearly the motion of the day-night hemispheres reversing direction near the perihelion.</p>
+    </div>
+</div>
+    
+<br />
+<p>After t = 58 days (14 days past perihelion), the Sun moves westward at faster speeds as seen in Mercury's sky. Point <span style="color:magenta;"><i>P</i></span> sees sunset at t = 88 days = 1 P<sub>rot</sub>. For the next 88 days, <span style="color:magenta;"><i>P</i></span> is at Mercury's night side. The Sun is almost directly below <span style="color:magenta;"><i>P</i></span> during the 28 days near the perihelion, but observers at <span style="color:magenta;"><i>P</i></span> won't be able to see the Sun until t = 176 days = 2P<sub>rot</sub> when the Sun rises. The day-night cycle repeats with a period of 176 days, or 2P<sub>orb</sub> or 3 P<sub>rot</sub>. So one Mercury day is equal to two Mercury years.</p>
+    
+<p>Now let's analyze the Sun's motion as seen from the green point <span style="color:green;"><i>Q</i></span>. At t = 0, the Sun is directly below <span style="color:green;"><i>Q</i></span>. Sunrise is defined as the moment when the Sun's upper edge touches the horizon. Calculation shows that sunrise occurs about 8.8 days before Mercury passes perihelion and the angular radius of the Sun is 0.8&deg; at this time, but the motion of the Sun in Mercury's sky is very slow close to perihelion. At about 4 days before perihelion, the lower edge of the sun is still below the horizon but the Sun moves eastward in the sky and is now setting! At 4 days past perihelion, the upper edge of the Sun is still above the horizon and the Sun starts moving westward and is rising again. The lower edge of the sun rises above the horizon 8.8 days past perihelion. Hence the whole sunrise lasts 17.6 days as seen at <span style="color:green;"><i>Q</i></span>. Although an observer at <span style="color:green;"><i>Q</i></span> sees the upper edge of the Sun above the horizon during this period, observers at some points further west of <span style="color:green;"><i>Q</i></span> will first see the sun rise, but before the whole sun rises it sets and rises again later when Mercury moves further away from perihelion. For the next 70 days, point <span style="color:green;"><i>Q</i></span> sees the entire Sun above horizon. The Sun begins to set 8.8 days before the next perihelion when the lower edge of the Sun touches the horizon. The sunset lasts 17.6 days. During this period observers at <span style="color:green;"><i>Q</i></span> see the Sun setting, rising slowly and setting again. The upper edge of the Sun drops below horizon 8.8 days past perihelion. The Sun is directly below <span style="color:green;"><i>Q</i></span> at t = 176 days = 3P<sub>rot</sub> = 2P<sub>orb</sub> and the cycle repeats.</p>
+<br />
+<p>The animations are generated by calculating Mercury's orbital motion using a standard method in celestial mechanics. The numerical method is explained in <a href="docs/Mercury-SpinOrbit.pdf" target="_blank">this pdf file</a>. The technical detail of animation setup is described on <a href="index.html" target="_blank">this page</a>.</p>
+<br />
+</div>   
+
+<script src="mercury.js"></script>
+</body>
+</html>
